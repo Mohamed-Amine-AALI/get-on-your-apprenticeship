@@ -3,7 +3,7 @@ var router = express.Router();
 var request = require('request');
 
 router.get('/students', function (req, res, next) {
-    var options = {
+    const options = {
         method: 'GET',
         url: 'http://hp-api.herokuapp.com/api/characters',
     }
