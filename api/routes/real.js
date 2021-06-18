@@ -13,4 +13,15 @@ router.get('/students', function (req, res, next) {
     });
 });
 
+router.get('/randomstudent', function (req, res, next) {
+    const options = {
+        method: 'GET',
+        url: 'http://hp-api.herokuapp.com/api/characters',
+    }
+    request(options, function (error, response, body) {
+        if (error) throw new Error(error);
+        res.json(JSON.parse(body))
+    });
+});
+
 module.exports = router;
