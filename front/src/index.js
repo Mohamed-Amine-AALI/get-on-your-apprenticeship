@@ -3,10 +3,19 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import logo from './hogwarts.png';
+import Typography from '@material-ui/core/Typography';
+import "@fontsource/roboto";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <header className="App-header">
+      <img src={logo} className="App-logo" alt="logo" />
+      <Typography variant="h2" gutterBottom>
+        Poudlard
+      </Typography>
+    </header>
+    <App className="App"/>
   </React.StrictMode>,
   document.getElementById('root')
 );
