@@ -9,7 +9,10 @@ import { withStyles } from "@material-ui/core/styles";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Box from "@material-ui/core/Box";
+import Button from '@material-ui/core/Button';
 import { FixedSizeList } from 'react-window';
+import Grid from '@material-ui/core/Grid';
+import Card from '@material-ui/core/Card';
 import './App.css';
 
 function TabPanel(props) {
@@ -44,36 +47,54 @@ function a11yProps(index) {
 const useStyles = theme => ({
   root: {
     backgroundColor: '#424242',
-    display: "flex",
-    height: "80%",
-    width: "80%"
+    display: "flex"
   },
   tabs: {
     borderRight: `1px solid #595959`
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    backgroundColor: '#333333',
+    color: "white"
   }
 });
 
 class App extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
-      apiResponse: [],
+      students: [],
+      championPerHouse: {},
+      isLoading: true,
       tabValue: 0
     };
   }
 
-  callAPI() {
+  componentWillMount() {
+    this.getStudents();
+  }
+
+  getStudents() {
     fetch("http://localhost:3000/real/students")
       .then(res => res.json())
       .then(res => {
         console.log(res)
-        this.setState({ apiResponse: res })
+        this.setState({ students: res })
+        this.getChampionPerHouse();
       })
       .catch(err => err);
   }
 
-  componentWillMount() {
-    this.callAPI();
+  getChampionPerHouse() {
+    fetch("http://localhost:3000/real/randomstudent")
+      .then(res => res.json())
+      .then(res => {
+        this.setState({ championPerHouse: res })
+        this.setState({ isLoading: false })
+      })
+      .catch(err => err);
   }
 
   handleChange(ev, newValue) {
@@ -83,7 +104,7 @@ class App extends Component {
   render() {
     const { classes } = this.props
     let students = [];
-    this.state.apiResponse.forEach((student, index) => {
+    this.state.students.forEach((student, index) => {
       students.push(
         <div>
           <ListItem key={index} button style={{ padding: 20 }}>
@@ -123,10 +144,10 @@ class App extends Component {
           <Tab label="List of students" {...a11yProps(0)} />
           <Tab label="Who's the champion !?" {...a11yProps(1)} />
         </Tabs>
-        <TabPanel value={this.state.tabValue} index={0}>
+        <TabPanel value={this.state.tabValue} index={0} stlyle={{ width: '100%', height: 550, width: 500 }}>
           <FixedSizeList style={{ backgroundColor: '#333333' }}
             height={550}
-            width={1300}
+            width={500}
             itemCount={students.length}
             itemSize={110}
           >
@@ -134,7 +155,23 @@ class App extends Component {
           </FixedSizeList>
         </TabPanel>
         <TabPanel value={this.state.tabValue} index={1}>
-          Item Two
+          <Grid container spacing={3}>
+            <Grid item xs={6}>
+              <Card className={classes.paper}>xs=6</Card>
+            </Grid>
+            <Grid item xs={6}>
+              <Card className={classes.paper}>xs=6</Card>
+            </Grid>
+            <Grid item xs={6}>
+              <Card className={classes.paper}>xs=6</Card>
+            </Grid>
+            <Grid item xs={6}>
+              <Card className={classes.paper}>xs=6</Card>
+            </Grid>
+          </Grid>
+          {/* <Button onClick={this.getChampionPerHouse} variant="contained" color="primary">
+            Champions
+          </Button> */}
         </TabPanel>
       </div>
     );
