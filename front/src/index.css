@@ -1,11 +1,11 @@
 html, body {
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-family: "Roboto";
   height: 100%;
   background-color: #212121;
   color: white;
   margin: 0;
+  position: relative;
 }
-
 
 #root {
   display: flex;
@@ -13,4 +13,8 @@ html, body {
   align-items: center;
   justify-content: space-around;
   height: 90%;
+  overflow: auto;
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
 }
