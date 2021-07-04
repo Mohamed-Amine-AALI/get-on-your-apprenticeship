@@ -32,9 +32,9 @@ class Students extends Component {
     const rowStudents = ({ index, style }) => <div style={style}>{students[index]}</div>
 
     return (
-      <FixedSizeList style={{ backgroundColor: '#333333', width: '100%' }}
-        height={550}
-        width={500}
+      <FixedSizeList style={{ backgroundColor: '#333333', width: '100%', height: '100%' }}
+        height={800}
+        width={800}
         itemCount={students.length}
         itemSize={110}
       >

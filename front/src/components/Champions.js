@@ -13,13 +13,13 @@ const useStyles = theme => ({
     alignContent: "space-around",
     backgroundColor: '#333333',
     color: "white",
-    margin: 10,
     padding: 10
   },
   details: {
     display: 'flex',
     flexDirection: 'column',
     flex: 1,
+    padding: 10,
     marginLeft: 10
   }
 });
@@ -47,7 +47,21 @@ class Champions extends Component {
       )
     });
 
-    return champions;
+    return (
+      <div 
+        style={{ 
+          height: '100%',
+          display: "flex", 
+          flexDirection: "column", 
+          justifyContent: "space-around", 
+          alignContent: 'space-around',
+          marginLeft: 10,
+          marginRight: 10
+        }}
+      >
+        {champions}
+      </div>
+    );
   }
 }
 

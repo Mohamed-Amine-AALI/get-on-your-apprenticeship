@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Students from './components/Students/Students'
-import Champions from './components/Champions/Champions';
+import Students from './components/Students'
+import Champions from './components/Champions';
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Box from "@material-ui/core/Box";
@@ -51,7 +51,7 @@ class App extends Component {
 
   render() {
     return (
-      <div style={{ backgroundColor: '#424242', display: 'flex', width: '80%' }}>
+      <div style={{ backgroundColor: '#424242', display: 'flex', width: '80%', height: "70%" }}>
         <Tabs
           orientation="vertical"
           variant="scrollable"
@@ -87,7 +87,7 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box p={3}>
+        <Box style={{height: '100%'}}>
           {children}
         </Box>
       )}
