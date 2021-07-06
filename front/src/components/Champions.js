@@ -13,11 +13,12 @@ const useStyles = theme => ({
     alignContent: "space-around",
     backgroundColor: '#333333',
     color: "white",
-    padding: 10
+    padding: 20
   },
   details: {
     display: 'flex',
     flexDirection: 'column',
+    justifyContent: 'center',
     flex: 1,
     padding: 10,
     marginLeft: 10
@@ -27,6 +28,8 @@ const useStyles = theme => ({
 class Champions extends Component {
 
   render() {
+
+    console.log(this.props.champions);
 
     const { classes } = this.props
 
@@ -39,21 +42,24 @@ class Champions extends Component {
             <div style={{ display: "flex", alignItems: "center" }}>
               <StarIcon style={{ marginRight: 10 }} />
               <Typography component="h5" variant="h5">
-                Champion : {champion.house}
+                {champion.name}
               </Typography>
             </div>
+            <Typography component="span" variant="body2" color="secondary">
+              House : {champion.house}
+            </Typography>
           </div>
         </Card>
       )
     });
 
     return (
-      <div 
-        style={{ 
+      <div
+        style={{
           height: '100%',
-          display: "flex", 
-          flexDirection: "column", 
-          justifyContent: "space-around", 
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-around",
           alignContent: 'space-around',
           marginLeft: 10,
           marginRight: 10

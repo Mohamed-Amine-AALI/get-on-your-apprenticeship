@@ -30,7 +30,6 @@ class App extends Component {
       .then(res => res.json())
       .then(students => {
         this.setState({ students: students })
-        //this.getChampions();
       })
       .catch(err => err);
   }
@@ -39,14 +38,13 @@ class App extends Component {
     return fetch("http://localhost:3000/real/randomstudent")
       .then(res => res.json())
       .then(champions => {
-        this.setState({ champions: champions })
-        //this.setState({ isLoading: false })
+        this.setState({ champions: champions });
       })
       .catch(err => err);
   }
 
   handleChange(ev, newValue) {
-    this.setState({ tabValue: newValue })
+    this.setState({ tabValue: newValue });
   }
 
   render() {

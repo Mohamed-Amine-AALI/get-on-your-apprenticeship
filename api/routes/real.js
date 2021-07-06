@@ -1,20 +1,20 @@
 var express = require('express');
-var router = express.Router();
 var request = require('request');
+var router = express.Router();
 
 const options = {
     method: 'GET',
-    url: 'http://hp-api.herokuapp.com/api/characters',
+    url: 'http://hp-api.herokuapp.com/api/characters'
 }
 
-router.get('/students', function (req, res, next) {
+router.get('/students', (req, res, next) => {
     request(options, function (error, response, body) {
         if (error) throw new Error(error);
-        res.json(JSON.parse(body))
+        res.json(JSON.parse(body));
     });
 });
 
-router.get('/randomstudent', function (req, res, next) {
+router.get('/randomstudent', (req, res, next) => {
     request(options, function (error, response, body) {
         if (error) throw new Error(error);
         let [studentsPerHouse, championPerHouse] = [{}, []];
@@ -23,10 +23,10 @@ router.get('/randomstudent', function (req, res, next) {
         houses.map(h => studentsPerHouse[h] = []);
         students.map(s => studentsPerHouse[s.house].push(s));
         Object.values(studentsPerHouse).forEach(students => {
-            const randomChampion = students[Math.floor(Math.random() * students.length)]
+            const randomChampion = students[Math.floor(Math.random() * students.length)];
             championPerHouse.push(randomChampion);
         });
-        res.json(championPerHouse)
+        res.json(championPerHouse);
     });
 });
 
