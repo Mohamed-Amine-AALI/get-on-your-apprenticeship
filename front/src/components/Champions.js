@@ -41,11 +41,11 @@ class Champions extends Component {
           <div className={classes.details}>
             <div style={{ display: "flex", alignItems: "center" }}>
               <StarIcon style={{ marginRight: 10 }} />
-              <Typography component="h5" variant="h5">
+              <Typography component="h5" variant="h4">
                 {champion.name}
               </Typography>
             </div>
-            <Typography component="span" variant="body2" color="secondary">
+            <Typography component="span" variant="h5" color="secondary">
               House : {champion.house}
             </Typography>
           </div>
